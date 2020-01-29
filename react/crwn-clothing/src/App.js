@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import HomePage from './pages/homepage/homepage.component.jsx';
+import store from './store';
 
 import './App.css';
 
-import HomePage from './pages/homepage/homepage.component.jsx';
-
-const HatsPage = () => (
-  <div>
-    <h1>HATS PAGE </h1>
-  </div>
-);
-
 function App() {
+
   return (
-    <div>
+    <Provider store={store}>
       <Switch>
         <Route exact path='/' component={HomePage} />
-        <Route path='/categories' component={HomePage} />
+        <Route path='/categories' component={HatsPage} />
       </Switch>
-    </div>
+    </Provider>
   );
 }
+
+const HatsPage = () => {
+  console.log();
+
+  return <div></div>;
+};
 
 export default App;
