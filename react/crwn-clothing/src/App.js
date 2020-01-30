@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
 import HomePage from './pages/homepage/homepage.component.jsx';
-import store from './store';
+import rootReducer from './reducers/rootReducer';
 
 import './App.css';
 
-function App() {
+const store = createStore(rootReducer);
 
+function App() {
   return (
     <Provider store={store}>
       <Switch>
