@@ -9,20 +9,20 @@ function App() {
   return (
     <Fragment>
       <h1>MRM Global</h1>
-      {drinks.map(drink => {
-        return (
-          <div className='drink'>
-            <div className='drink-text'>
-              <p >Name:</p>
+      <div className='drinks-wrapper'>
+        {drinks.map(drink => {
+          return (
+            <div className='drink'>
+              <p className='label'>Name:</p>
               <p>{drink.name}</p>
-              <p>Description:</p>
+              <p className='label'>Description:</p>
               <p>{drink.description}</p>
-              <p>Category:</p>
+              <p className='label'>Category:</p>
               <p>{drink.category}</p>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </Fragment>
   );
 }
