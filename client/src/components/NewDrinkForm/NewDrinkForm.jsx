@@ -1,17 +1,41 @@
 import React, { useState } from 'react';
+import { useAlert } from 'react-alert';
 
 import './NewDrinkForm.css';
 
-const NewDrinkForm = () => {
+const NewDrinkForm = ({ onAdd }) => {
+  const alert = useAlert();
   const [selectedCategory, setSelectedCategory] = useState('Beers');
+  const [enteredName, setEnteredName] = useState('');
+  const [enteredDesc, setEnteredDesc] = useState('');
 
   const handleCategoryChange = event => {
     setSelectedCategory(event.target.value);
   };
 
+  const handleNameChange = event => {
+    setEnteredName(event.target.value);
+  };
+  const handleDescChange = event => {
+    setEnteredDesc(event.target.value);
+  };
+
   const onSubmit = event => {
     event.preventDefault();
-    console.log('You have picked: ' + selectedCategory);
+
+    const newDrink = {
+      name: enteredName,
+      description: enteredDesc,
+      category: selectedCategory,
+    };
+
+    onAdd(newDrink);
+
+    setSelectedCategory('Beers');
+    setEnteredName('');
+    setEnteredDesc('');
+
+    alert.success('Drink successfully added!');
   };
 
   return (
@@ -19,12 +43,12 @@ const NewDrinkForm = () => {
       <p>New drinks form</p>
       <label>Name: </label>
       <br />
-      <input></input>
+      <input value={enteredName} onChange={handleNameChange}></input>
       <br />
       <br />
       <label>Description:</label>
       <br />
-      <input></input>
+      <input value={enteredDesc} onChange={handleDescChange}></input>
       <br />
       <br />
       <label>Category:</label>

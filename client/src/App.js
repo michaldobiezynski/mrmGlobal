@@ -6,41 +6,42 @@ import NewDrinkForm from './components/NewDrinkForm/NewDrinkForm';
 
 import './App.css';
 
-function App() {
+const App = () => {
   const [showDrinks, setShowDrinks] = useState(true);
+
   const [allDrinks, setAllDrinks] = useState(products);
-  const [beers, setBeers] = useState(
-    products.filter(beer => {
-      return beer.category === 'Beers';
-    }),
-  );
-  const [wines, setWines] = useState(
-    products.filter(wine => {
-      return wine.category === 'Wines';
-    }),
-  );
-  const [cocktails, setCocktailss] = useState(
-    products.filter(cocktail => {
-      return cocktail.category === 'Cocktails';
-    }),
-  );
-  const [drinks, setDrinks] = useState(allDrinks);
+
+  const [drinkCategory, setDrinkCategory] = useState('All');
+
+  const onAdd = newDrink => {
+    setAllDrinks(prevState => {
+      return prevState.concat(newDrink);
+    });
+  };
 
   return (
     <Fragment>
       <h1>MRM Global</h1>
       <div className='toggleButtons'>
-        <button onClick={() => setDrinks(allDrinks)}>All</button>
-        <button onClick={() => setDrinks(beers)}>Beers</button>
-        <button onClick={() => setDrinks(wines)}>Wines</button>
-        <button onClick={() => setDrinks(cocktails)}>Cocktails</button>
+        <button onClick={() => setDrinkCategory('All')}>All</button>
+        <button onClick={() => setDrinkCategory('Beers')}>Beers</button>
+        <button onClick={() => setDrinkCategory('Wines')}>Wines</button>
+        <button onClick={() => setDrinkCategory('Cocktails')}>Cocktails</button>
       </div>
       <button onClick={() => setShowDrinks(!showDrinks)} className='addDrink'>
         {showDrinks ? 'Add a drink' : 'Show drinks'}
       </button>
-      {showDrinks ? <DrinksGrid drinks={drinks} /> : <NewDrinkForm />}
+      {showDrinks ? (
+        drinkCategory === 'All' ? (
+          <DrinksGrid drinks={allDrinks} />
+        ) : (
+          <DrinksGrid drinks={allDrinks} drinkCategory={drinkCategory} />
+        )
+      ) : (
+        <NewDrinkForm onAdd={onAdd} />
+      )}
     </Fragment>
   );
-}
+};
 
 export default App;
