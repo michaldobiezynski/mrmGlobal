@@ -49,8 +49,8 @@ const NewDrinkForm = ({ onAdd }) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <p>New drinks form</p>
+    <form onSubmit={onSubmit} className='drink-form'>
+      <h2 className='drink-form-title'>New drink</h2>
       <label>Name: </label>
       <br />
       <textarea
@@ -104,7 +104,9 @@ const NewDrinkForm = ({ onAdd }) => {
       </label>
       <br />
       <br />
-      <button type='submit'>ADD DRINK</button>
+      <button className='formButton' type='submit'>
+        ADD DRINK
+      </button>
     </form>
   );
 };

@@ -6,27 +6,25 @@ import './DrinksGrid.css';
 
 const DrinksGrid = ({ drinks, drinkCategory, onRemove }) => {
   return drinkCategory ? (
-    <div className='drinks-wrapper'>
-      {drinks.filter(drink => drink.category === drinkCategory).length !== 0 ? (
-        drinks
+    drinks.filter(drink => drink.category === drinkCategory).length !== 0 ? (
+      <div className='drinks-wrapper'>
+        {drinks
           .filter(drink => drink.category === drinkCategory)
           .map(drink => {
             return <Drink drink={drink} onRemove={onRemove} />;
-          })
-      ) : (
-        <h2>There are no drinks in this category!</h2>
-      )}
+          })}
+      </div>
+    ) : (
+      <h2>There are no drinks in this category!</h2>
+    )
+  ) : drinks.length !== 0 ? (
+    <div className='drinks-wrapper'>
+      {drinks.map(drink => {
+        return <Drink drink={drink} onRemove={onRemove} />;
+      })}
     </div>
   ) : (
-    <div className='drinks-wrapper'>
-      {drinks.length !== 0 ? (
-        drinks.map(drink => {
-          return <Drink drink={drink} onRemove={onRemove} />;
-        })
-      ) : (
-        <h2>There are no drinks at all!</h2>
-      )}
-    </div>
+    <h2>There are no drinks at all!</h2>
   );
 };
 

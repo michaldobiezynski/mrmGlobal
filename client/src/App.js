@@ -31,14 +31,14 @@ const App = () => {
     <Fragment>
       <h1>MRM Global</h1>
       <button onClick={() => setShowDrinks(!showDrinks)} className='addDrink'>
-        {showDrinks ? 'Add a drink' : 'Show drinks'}
+        {showDrinks ? 'Add drink' : 'Show drinks'}
       </button>
       {showDrinks ? (
         <div className='toggleButtons'>
-          <button onClick={() => setDrinkCategory('All')}>All</button>
-          <button onClick={() => setDrinkCategory('Beers')}>Beers</button>
-          <button onClick={() => setDrinkCategory('Wines')}>Wines</button>
-          <button onClick={() => setDrinkCategory('Cocktails')}>
+          <button className='drinkButton' onClick={() => setDrinkCategory('All')}>All</button>
+          <button className='drinkButton' onClick={() => setDrinkCategory('Beers')}>Beers</button>
+          <button className='drinkButton' onClick={() => setDrinkCategory('Wines')}>Wines</button>
+          <button className='drinkButton' onClick={() => setDrinkCategory('Cocktails')}>
             Cocktails
           </button>
         </div>

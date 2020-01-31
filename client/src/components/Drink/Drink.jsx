@@ -17,8 +17,10 @@ const Drink = ({ drink, onRemove }) => {
     <div className='drink' key={drink.name}>
       <p className='label'>Name:</p>
       <p>{drink.name}</p>
+      <br />
       <p className='label'>Description:</p>
       <p>{drink.description}</p>
+      <br />
       <p className='label'>Category:</p>
       <p>{drink.category}</p>
       <img

@@ -1,3 +1,33 @@
 .textarea {
   resize: none;
 }
+
+.drink-form {
+  position: relative;
+  list-style: none;
+  margin: 0 auto;
+  padding: 1rem;
+  width: 90%;
+  max-width: 40rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 6px;
+  background: white;
+}
+
+.drink-form-title {
+  margin: 0;
+  padding: 0;
+}
+
+.formButton {
+  width: 20%;
+  margin: 0 auto;
+  font-size: 16px;
+  background-color: #4caf50;
+}
+
+.formButton:hover {
+  background: #f8df00;
+  border-color: #292929;
+  color: #292929;
+}
