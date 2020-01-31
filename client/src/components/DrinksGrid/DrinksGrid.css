@@ -1,0 +1,22 @@
+.drinks-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.drink {
+  width: 30vw;
+  flex-direction: column;
+  height: 425px;
+  margin: 1rem;
+  border: 5px solid red;
+}
+
+.label {
+  color: #ffd700;
+}
+
+h2 {
+  color: firebrick;
+  text-align: center;
+  padding-top: 15rem;
+}
