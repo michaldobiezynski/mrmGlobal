@@ -1,11 +1,3 @@
-h1 {
-  text-align: center;
-  color: #ff4411;
-  font-size: 48px;
-  font-family: 'Signika', sans-serif;
-  padding-bottom: 10px;
-}
-
 .addDrink {
   margin: 3rem;
   margin-right: 47%;
@@ -16,4 +8,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   height: 40px;
+  
 }
+
+

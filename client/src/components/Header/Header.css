@@ -1,7 +1,9 @@
 .main-header {
+  height: 70px;
   width: 100%;
-  height: 4rem;
   display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
   align-items: center;
   position: fixed;
   top: 0;
@@ -10,4 +12,35 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.26);
   padding: 0 1rem;
   z-index: 5;
+}
+
+.options-container {
+  position: flex;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex;
+}
+
+.option-button {
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-left: 10px;
+  border: 1px solid transparent;
+  color: #292929;
+  text-decoration: none;
+  padding: 0.5rem;
+}
+
+.option-button:hover {
+  background: #f8df00;
+  border-color: #292929;
+  color: #292929;
+}
+
+.header-title {
+  color: white;
+  font-family: 'Signika', sans-serif;
 }

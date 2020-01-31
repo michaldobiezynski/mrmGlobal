@@ -28,14 +28,17 @@ const App = () => {
     }
   };
 
+  const drinkButtonHandler = ({ category }) => {
+    setShowDrinks(true);
+    setDrinkCategory(prevState => {
+      setDrinkCategory(category);
+    });
+  };
+
   return (
     <Fragment>
-      <Header />
-      <h1>MRM Global</h1>
-      <button onClick={() => setShowDrinks(!showDrinks)} className='addDrink'>
-        {showDrinks ? 'Add a drink' : 'Show drinks'}
-      </button>
-      {showDrinks ? (
+      <Header drinkButtonHandler={drinkButtonHandler} />>
+      {/* {showDrinks ? (
         <div className='toggleButtons'>
           <button onClick={() => setDrinkCategory('All')}>All</button>
           <button onClick={() => setDrinkCategory('Beers')}>Beers</button>
@@ -46,8 +49,7 @@ const App = () => {
         </div>
       ) : (
         <p></p>
-      )}
-
+      )} */}
       {showDrinks ? (
         drinkCategory === 'All' ? (
           <DrinksGrid drinks={allDrinks} onRemove={onRemove} />
