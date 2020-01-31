@@ -11,7 +11,7 @@ const DrinksGrid = ({ drinks, drinkCategory, onRemove }) => {
         {drinks
           .filter(drink => drink.category === drinkCategory)
           .map(drink => {
-            return <Drink drink={drink} onRemove={onRemove} />;
+            return <Drink key={drink.name} drink={drink} onRemove={onRemove} />;
           })}
       </div>
     ) : (
@@ -20,7 +20,7 @@ const DrinksGrid = ({ drinks, drinkCategory, onRemove }) => {
   ) : drinks.length !== 0 ? (
     <div className='drinks-wrapper'>
       {drinks.map(drink => {
-        return <Drink drink={drink} onRemove={onRemove} />;
+        return <Drink key={drink.name} drink={drink} onRemove={onRemove} />;
       })}
     </div>
   ) : (
