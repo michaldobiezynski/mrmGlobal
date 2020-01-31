@@ -7,7 +7,7 @@ import App from './App';
 
 const options = {
   position: positions.MIDDLE,
-  timeout: 2000,
+  timeout: 1000,
   offset: '30px',
   transition: transitions.SCALE,
 };

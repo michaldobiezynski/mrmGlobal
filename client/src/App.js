@@ -10,7 +10,6 @@ const App = () => {
   const [showDrinks, setShowDrinks] = useState(true);
 
   const [allDrinks, setAllDrinks] = useState(products);
-
   const [drinkCategory, setDrinkCategory] = useState('All');
 
   const onAdd = newDrink => {
@@ -19,23 +18,43 @@ const App = () => {
     });
   };
 
+  const onRemove = name => {
+    const drinkToBeRemoved = allDrinks.find(drink => drink.name === name);
+    if (drinkToBeRemoved) {
+      setAllDrinks(prevState => {
+        return prevState.filter(drink => drink !== drinkToBeRemoved);
+      });
+    }
+  };
+
   return (
     <Fragment>
       <h1>MRM Global</h1>
-      <div className='toggleButtons'>
-        <button onClick={() => setDrinkCategory('All')}>All</button>
-        <button onClick={() => setDrinkCategory('Beers')}>Beers</button>
-        <button onClick={() => setDrinkCategory('Wines')}>Wines</button>
-        <button onClick={() => setDrinkCategory('Cocktails')}>Cocktails</button>
-      </div>
       <button onClick={() => setShowDrinks(!showDrinks)} className='addDrink'>
         {showDrinks ? 'Add a drink' : 'Show drinks'}
       </button>
       {showDrinks ? (
+        <div className='toggleButtons'>
+          <button onClick={() => setDrinkCategory('All')}>All</button>
+          <button onClick={() => setDrinkCategory('Beers')}>Beers</button>
+          <button onClick={() => setDrinkCategory('Wines')}>Wines</button>
+          <button onClick={() => setDrinkCategory('Cocktails')}>
+            Cocktails
+          </button>
+        </div>
+      ) : (
+        <p></p>
+      )}
+
+      {showDrinks ? (
         drinkCategory === 'All' ? (
-          <DrinksGrid drinks={allDrinks} />
+          <DrinksGrid drinks={allDrinks} onRemove={onRemove} />
         ) : (
-          <DrinksGrid drinks={allDrinks} drinkCategory={drinkCategory} />
+          <DrinksGrid
+            drinks={allDrinks}
+            drinkCategory={drinkCategory}
+            onRemove={onRemove}
+          />
         )
       ) : (
         <NewDrinkForm onAdd={onAdd} />

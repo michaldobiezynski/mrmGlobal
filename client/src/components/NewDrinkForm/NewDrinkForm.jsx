@@ -29,13 +29,23 @@ const NewDrinkForm = ({ onAdd }) => {
       category: selectedCategory,
     };
 
-    onAdd(newDrink);
+    if (enteredName.trim().length === 0) {
+      alert.error('Name cannot be empty!');
+    } else if (enteredDesc.trim().length === 0) {
+      alert.error('Description cannot be empty!');
+    } else if (enteredName.length > 35) {
+      alert.error('Name cannot be longer than 35 characters!');
+    } else if (enteredDesc.length > 725) {
+      alert.error('Description cannot be longer than 725 characters!');
+    } else {
+      onAdd(newDrink);
 
-    setSelectedCategory('Beers');
-    setEnteredName('');
-    setEnteredDesc('');
+      setSelectedCategory('Beers');
+      setEnteredName('');
+      setEnteredDesc('');
 
-    alert.success('Drink successfully added!');
+      alert.success('Drink successfully added!');
+    }
   };
 
   return (
@@ -43,12 +53,24 @@ const NewDrinkForm = ({ onAdd }) => {
       <p>New drinks form</p>
       <label>Name: </label>
       <br />
-      <input value={enteredName} onChange={handleNameChange}></input>
+      <textarea
+        className='textarea'
+        cols='50'
+        rows='1'
+        required
+        value={enteredName}
+        onChange={handleNameChange}></textarea>
       <br />
       <br />
       <label>Description:</label>
       <br />
-      <input value={enteredDesc} onChange={handleDescChange}></input>
+      <textarea
+        className='textarea'
+        required
+        rows='10'
+        cols='100'
+        value={enteredDesc}
+        onChange={handleDescChange}></textarea>
       <br />
       <br />
       <label>Category:</label>

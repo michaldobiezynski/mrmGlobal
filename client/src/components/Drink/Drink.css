@@ -1,0 +1,18 @@
+.drink {
+  width: 30vw;
+  flex-direction: column;
+  height: 60vw;
+  margin: 1rem;
+  border: 5px solid red;
+  background-color: whitesmoke;
+}
+
+.label {
+  color: #ffd700;
+}
+
+.trash-image {
+  widows: 25px;
+  height: 25px;
+  margin-left: 45%;
+}
