@@ -2,7 +2,11 @@ h1 {
   text-align: center;
 }
 
-
+.addDrink {
+  margin: 3rem;
+  margin-right: 47%;
+  margin-left: 47%;
+}
 
 .toggleButtons {
   display: grid;

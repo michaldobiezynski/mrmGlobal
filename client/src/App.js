@@ -2,10 +2,12 @@ import React, { useState, Fragment } from 'react';
 
 import { products } from './data/products';
 import DrinksGrid from './components/DrinksGrid/DrinksGrid';
+import NewDrinkForm from './components/NewDrinkForm/NewDrinkForm';
 
 import './App.css';
 
 function App() {
+  const [showDrinks, setShowDrinks] = useState(true);
   const [allDrinks, setAllDrinks] = useState(products);
   const [beers, setBeers] = useState(
     products.filter(beer => {
@@ -33,7 +35,10 @@ function App() {
         <button onClick={() => setDrinks(wines)}>Wines</button>
         <button onClick={() => setDrinks(cocktails)}>Cocktails</button>
       </div>
-      <DrinksGrid drinks={drinks} />
+      <button onClick={() => setShowDrinks(!showDrinks)} className='addDrink'>
+        {showDrinks ? 'Add a drink' : 'Show drinks'}
+      </button>
+      {showDrinks ? <DrinksGrid drinks={drinks} /> : <NewDrinkForm />}
     </Fragment>
   );
 }
