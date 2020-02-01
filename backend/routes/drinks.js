@@ -7,7 +7,7 @@ const Drink = require('../models/Drink');
 //@route    POST /drinks
 //@desc     Add a drink
 //@access   Public
-router.get(
+router.post(
   '/',
   [
     check(
@@ -48,7 +48,7 @@ router.get(
 
       await drink.save();
 
-      res.send('Drinks added!');
+      res.send('Drink added!');
     } catch (error) {
       console.error(error.message);
       res.status(500).send('Server error');
