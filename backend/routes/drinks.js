@@ -69,4 +69,22 @@ router.get('/all', async (req, res) => {
   }
 });
 
+//@route    Get /drinks/category/:category
+//@desc     Get all drinks in a given category
+//@access   Public
+router.get('/category/:category', async (req, res) => {
+  try {
+    const drinks = await Drink.find({
+      category: req.params.category,
+    });
+    if (drinks.length === 0) {
+      res.json({ msg: 'No drinks in this category' });
+    }
+    res.json(drinks);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;
