@@ -4,11 +4,11 @@ const { check, validationResult } = require('express-validator');
 
 const Drink = require('../models/Drink');
 
-//@route    POST /drinks
+//@route    POST /drinks/add
 //@desc     Add a drink
 //@access   Public
 router.post(
-  '/',
+  '/add',
   [
     check(
       'name',
@@ -55,5 +55,18 @@ router.post(
     }
   },
 );
+
+//@route    Get /drinks/all
+//@desc     Get all drinks
+//@access   Public
+router.get('/all', async (req, res) => {
+  try {
+    const drinks = await Drink.find();
+    res.json(drinks);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 module.exports = router;
