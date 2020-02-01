@@ -20,8 +20,8 @@ router.post(
     ).isLength({ min: 1, max: 725 }),
     check(
       'category',
-      'Category should be either Beers, Wines or Cocktails.',
-    ).isIn(['Beers', 'Wines', 'Cocktails']),
+      'Category needs to be between 1 and 35 characters long.',
+    ).isLength({ min: 1, max: 35 }),
   ],
   async (req, res) => {
     const errors = validationResult(req);
