@@ -1,3 +1,1 @@
-import {onRemove, allDrinks, setAllDrinks} from '../App';
-
-it('Testing onRemove method for removing ', () => {});
+it('this is a tests', () => {});
